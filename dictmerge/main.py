@@ -1,12 +1,11 @@
-from copy import deepcopy
-
 def best_effort_merge(accumulated_dict, update_dict):
     """
     Best effort merge. Attempt to preserve elements in the
     aggregated dictionary if the types match. 
+    *** Important - This function has side effects ***
     :param accumulated_dict: Aggregated dictionary
     :param update: Dict update to be added on
-    :return: New dictionary with updates added in
+    :return: accumulated_dict with updates added in
     """
     for key, value in update_dict.iteritems():
         key_not_present = key not in accumulated_dict
