@@ -1,5 +1,5 @@
 # dict_merge
-Utility to merge dictionaries
+Simple utility to merge nested python dictionaries
 
 ## Testing
 * Running all the tests
