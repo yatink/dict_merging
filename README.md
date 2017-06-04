@@ -28,6 +28,7 @@ In [4]: %timeit best_effort_merge(accumulated_dict, update_dict)
 
 ### After - No copy.deepcopy
 TL;DR - :thumbsup: :shipit:
+```
 In [1]:  accumulated_dict = {'x': {'whack': range(0,1000), 'bonk': range(0, 10000), 'properties': {'p1': 'mclaren', 'p50': 'peel'}}}
 
 In [2]: update_dict = {'x': {'properties': {'p100D': 'Tesla'}}}
@@ -37,22 +38,5 @@ In [3]: from dictmerge import best_effort_merge
 In [4]: %timeit best_effort_merge(accumulated_dict, update_dict)
 100000 loops, best of 3: 4.94 µs per loop <<<<<<<<<<<<<<<---------- :-)
 
-In [5]:
-
-
-
-In [5]: x = best_effort_merge(accumulated_dict, update_dict)
-
-In [6]: import json
-
-In [7]: %timeit json.dumps(x)
-100 loops, best of 3: 2.23 ms per loop
-
-In [8]: json_x = json.dumps(x)
-
-In [9]: %timeit json.loads(json_x)
-100 loops, best of 3: 2.38 ms per loop
-
-In [10]:
 ```
 	
