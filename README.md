@@ -12,7 +12,8 @@ python setup.py test
 python setup.py test --addopts='-s path/to/test.py::test_fn_name
 ```
 
-* Quick Perf
+## Quick Perf
+### Before - With copy.deepcopy
 TL;DR - Not good :-|
 ```
 In [1]:  accumulated_dict = {'x': {'whack': range(0,1000), 'bonk': range(0, 10000), 'properties': {'p1': 'mclaren', 'p50': 'peel'}}}
@@ -23,6 +24,22 @@ In [3]: from dictmerge import best_effort_merge
 
 In [4]: %timeit best_effort_merge(accumulated_dict, update_dict)
 10 loops, best of 3: 53.7 ms per loop <<<<<<<<<<<<<<<<<-------------- :-O
+```
+
+### After - No copy.deepcopy
+TL;DR - :thumbsup: :shipit:
+In [1]:  accumulated_dict = {'x': {'whack': range(0,1000), 'bonk': range(0, 10000), 'properties': {'p1': 'mclaren', 'p50': 'peel'}}}
+
+In [2]: update_dict = {'x': {'properties': {'p100D': 'Tesla'}}}
+
+In [3]: from dictmerge import best_effort_merge
+
+In [4]: %timeit best_effort_merge(accumulated_dict, update_dict)
+100000 loops, best of 3: 4.94 µs per loop <<<<<<<<<<<<<<<---------- :-)
+
+In [5]:
+
+
 
 In [5]: x = best_effort_merge(accumulated_dict, update_dict)
 
@@ -38,3 +55,4 @@ In [9]: %timeit json.loads(json_x)
 
 In [10]:
 ```
+	
