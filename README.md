@@ -13,7 +13,7 @@ python setup.py test --addopts='-s path/to/test.py::test_fn_name
 ```
 
 ## Quick Perf
-### Before - With copy.deepcopy
+### Before - With `copy.deepcopy`
 TL;DR - Not good :-|
 ```
 In [1]:  accumulated_dict = {'x': {'whack': range(0,1000), 'bonk': range(0, 10000), 'properties': {'p1': 'mclaren', 'p50': 'peel'}}}
@@ -26,7 +26,7 @@ In [4]: %timeit best_effort_merge(accumulated_dict, update_dict)
 10 loops, best of 3: 53.7 ms per loop <<<<<<<<<<<<<<<<<-------------- :-O
 ```
 
-### After - No copy.deepcopy
+### After - No `copy.deepcopy`
 TL;DR - :thumbsup: :shipit:
 ```
 In [1]:  accumulated_dict = {'x': {'whack': range(0,1000), 'bonk': range(0, 10000), 'properties': {'p1': 'mclaren', 'p50': 'peel'}}}
